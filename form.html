@@ -1,11 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> feedback form</title>
+
+
 </head>
-<body>
+
+<body> 
+
     
+    <table border = "1">
+        <thead>
+            <tr>
+
+            <th>name</th>
+            <th>phone number</th>
+            <th>rating</th>
+            <th>selectedSkills</th>
+            <th>comment</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>sai kumar</td>
+                <td>999999999</td>
+                <td>5</td>
+                <td>mern</td>
+                <td>Excellent</td>
+                
+
+            </tr>
+            <tr>
+                <td>raj kumar</td>
+                <td>999999999</td>
+                <td>5</td>
+                <td>java</td>
+                <td>Excellent</td>
+                
+
+                
+
+            </tr>
+            <tr>
+                <td>ravi kumar</td>
+                <td>999999999</td>
+                <td>5</td>
+                <td>python</td>
+                <td>good</td>
+                
+
+                
+
+            </tr>
+        </tbody>
+
+    </table>
+    <form onsubmit="handleSubmit(event)">
+        <h1> feedback form </h1>
+        <br>
+        <br>
+        <br>
+        <div>
+            <lable for="name">Name</lable>
+            <input type="text" id="name" placeholder="name" required>
+        </div>
+        <br>
+        <br>
+        <div>
+            <label for="phone number"> phone number</label>
+            <input type="text" id="phone_number" placeholder="+91 00000000000" maxlength="10">
+        </div>
+        <br>
+        <br>
+        <div>
+            <lable for="rating">Rating</lable>
+            <select id="rating" name="Rateus">
+                <option value="">--Select a Rating--</option>
+                <option value="1">*</option>
+                <option value="2">**</option>
+                <option value="3">***</option>
+                <option value="4">****</option>
+                <option value="5">*****</option>
+
+
+            </select>
+        </div>
+        <br>
+        <br>
+        <div>
+
+            <label for="course"> select cource: </label><br>
+
+            <input id="mern" type="radio" name="course" value="mern">
+            <label for="Mern"> Mern</label><br>
+
+            <input id="python" type="radio" name="course" value="python">
+            <label for="python"> Python</label><br>
+
+            <input id="java" type="radio" name="course" value="java">
+            <label for="java"> java</label><br>
+
+
+        </div>
+
+        <br>
+        <br>
+        <div>
+
+            <lable>skills</lable>
+            <br>
+            <br>
+            <input type="checkbox" name="skills" id="communication" value="communication">
+            <lable for="communication">communication</lable>
+            <br>
+            <input type="checkbox" name="skills" id="aplitude"value="aplitude">
+            <lable for="aplitude"> aplitude</lable>
+            <br>
+            <input type="checkbox" name="skills" id="reasoning"value="reasoning">
+            <lable for="reasoning"> reasoning</lable>
+            <br>
+            </select>
+        </div>
+        <br>
+        <br>
+
+        <div>
+            <lable for="comments"> comments</lable>
+            <textarea id="comments"> </textarea>
+        </div>
+        <br>
+        <br>
+        <button type="submit"> submit</button>
+
+    </form>
+    <script>
+        
+        function handleSubmit(event) {
+            event.preventDefault()
+            const name = document.getElementById("name").value
+            const number = document.getElementById("phone_number").value
+            const rating = document.getElementById("rating").value
+            const course = document.querySelector("input[name='course']:checked").value
+            const skills = document.querySelectorAll("input[name='skills']:checked")
+            const selectedSkills = []
+            for(let i =0 ;i<skills.length;i++){
+                selectedSkills.push(skills[i].value)
+            }
+            const comment = document.getElementById("comments").value
+            
+            
+            const formData={
+                name,
+                phone_number:number,
+                rating,
+                course,
+                skills : selectedSkills.join(" , "),
+                comment
+
+            }
+            
+            console.log(formData)
+
+        }
+    </script>
+
+
+
+
+
+
+
 </body>
+
 </html>
